@@ -142,3 +142,39 @@ footer {
   padding: 20px;
   color: #666;
 }
+
+.participants-section {
+  margin-top: 40px;
+}
+
+.participant-card {
+  margin-bottom: 15px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.participant-card img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.participant-card .details {
+  flex: 1;
+}
+
+.participant-card h4 {
+  margin: 0;
+  color: #1a237e;
+}
+
+.participant-card p {
+  margin: 5px 0 0;
+  color: #666;
+}
