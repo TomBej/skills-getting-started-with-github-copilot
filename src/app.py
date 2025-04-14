@@ -59,9 +59,52 @@ def signup_for_activity(activity_name: str, email: str):
     if activity_name not in activities:
         raise HTTPException(status_code=404, detail="Activity not found")
 
-    # Get the specificy activity
+    # Get the activity
     activity = activities[activity_name]
+
+    # Validate student is not already signed up
+    if email in activity["participants"]:
+        raise HTTPException(status_code=400, detail="Student is already signed up")
 
     # Add student
     activity["participants"].append(email)
     return {"message": f"Signed up {email} for {activity_name}"}
+    # Add more activities to the in-memory database
+    activities.update({
+        "Basketball Team": {
+            "description": "Join the basketball team and compete in local tournaments",
+            "schedule": "Tuesdays and Thursdays, 4:00 PM - 6:00 PM",
+            "max_participants": 15,
+            "participants": []
+        },
+        "Soccer Club": {
+            "description": "Practice soccer skills and participate in matches",
+            "schedule": "Wednesdays and Fridays, 3:30 PM - 5:30 PM",
+            "max_participants": 20,
+            "participants": []
+        },
+        "Art Workshop": {
+            "description": "Explore your creativity through painting and drawing",
+            "schedule": "Saturdays, 10:00 AM - 12:00 PM",
+            "max_participants": 10,
+            "participants": []
+        },
+        "Drama Club": {
+            "description": "Learn acting skills and perform in school plays",
+            "schedule": "Mondays and Wednesdays, 3:30 PM - 5:00 PM",
+            "max_participants": 12,
+            "participants": []
+        },
+        "Math Olympiad Training": {
+            "description": "Prepare for math competitions with advanced problem-solving",
+            "schedule": "Tuesdays and Thursdays, 4:30 PM - 6:00 PM",
+            "max_participants": 25,
+            "participants": []
+        },
+        "Debate Club": {
+            "description": "Develop public speaking and argumentation skills",
+            "schedule": "Fridays, 3:00 PM - 4:30 PM",
+            "max_participants": 18,
+            "participants": []
+        }
+    })
